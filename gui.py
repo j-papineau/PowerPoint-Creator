@@ -25,7 +25,7 @@ def region_button(self):
     region_title.configure(text=f'Selected Region: {self}')
     print(self)
     # create comparison using given name
-    showResults()
+    showResults(self)
 
 def populateRegions(scroll_pane):
 
@@ -44,9 +44,9 @@ def populateRegions(scroll_pane):
         btn = customtkinter.CTkButton(master=scroll_pane, text=name, command= lambda x=name: region_button(x))
         region_buttons.append(btn)
         btn.pack(pady=10)
- 
-        
-def showResults():
+
+
+def showResults(region_name):
     # enable text boxes
     result_one.configure(state='normal')
     result_two.configure(state='normal')
@@ -57,6 +57,9 @@ def showResults():
     regions_one = create_region_objects(range_one.get() + ".csv")
     regions_two = create_region_objects(range_two.get() + ".csv")
     regions_three = create_region_objects(range_three.get() + ".csv")
+
+    # find region 
+    print(f'comparing {region_name}')
 
     result_one.delete("0.0", "end")
     result_two.delete("0.0", "end")
@@ -168,22 +171,7 @@ result_one.pack(pady=5)
 result_two.pack(pady=5)
 
 
-
-
-
-
-
-
-
-
-
-
-
 # create powerpoint
-
-
-
-
 
 
 root.mainloop()
